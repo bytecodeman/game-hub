@@ -16,7 +16,12 @@ const useGenres = () => {
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,
     keepPreviousData: true,
-    initialData: { count: genres.length, results: genres },
+    initialData: {
+      count: genres.length,
+      next: null,
+      prev: null,
+      results: genres,
+    },
   });
 };
 
