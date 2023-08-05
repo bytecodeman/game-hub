@@ -4,22 +4,27 @@ import GamesDetailPage from "./pages/GamesDetailPage";
 import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "games/:slug",
+          element: <GamesDetailPage />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "games/:slug",
-        element: <GamesDetailPage />,
-      },
-    ],
-  },
-]);
+    basename: "/specialapps/gamehub/",
+  }
+);
 
 export default router;
